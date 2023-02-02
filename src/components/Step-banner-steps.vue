@@ -15,7 +15,9 @@ const step = inject<TSelectedStep>(selectedStepKey);
         :class="[number === step?.selectedStep.value ? 'bg-pastelBlue' : '']"
         class="border border-white rounded-full h-8 w-8 text-center align-middle leading-8 font-medium text-white">
                 <p 
-                :class="[number === step?.selectedStep.value ? 'text-black' : '']">
+                :class="[number === step?.selectedStep.value ? 'text-black' : '']"
+                class="font-semibold"
+                >
                     {{ number }}
                 </p>
         </div>

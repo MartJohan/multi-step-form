@@ -1,9 +1,10 @@
 <script setup lang="ts">import { selectedStepKey } from '@/keys/keys';
 import type { TSelectedStep } from '@/types/selectedStep';
-import { inject } from 'vue';
+import { inject, ref } from 'vue';
 
 
 const step = inject<TSelectedStep>(selectedStepKey);
+console.log(step?.selectedStep.value)
 
 </script>
 
@@ -15,13 +16,25 @@ const step = inject<TSelectedStep>(selectedStepKey);
         <div 
         class="p-2"
         :class="[step.selectedStep.value > 1 ? 'block' : 'hidden']">
-            <button class="rounded p-2 text-coolGray self-start">
+            <button 
+            class="rounded p-2 text-coolGray self-start"
+            @click="step?.previousStep">
                 Go Back
             </button>
         </div>
-        <div class="p-2">
-            <button class="rounded p-2 bg-marineBlue text-white">
-                Next Step
+        <div 
+        class="p-2">
+            <button 
+            class="rounded p-2 bg-marineBlue text-white"
+            @click="step?.nextStep">
+                <template 
+                v-if="step.selectedStep.value < 4">
+                    Next Step
+                </template>
+                <template 
+                v-if="step.selectedStep.value > 3">
+                    Confirm
+                </template>
             </button>
         </div>
     </div>

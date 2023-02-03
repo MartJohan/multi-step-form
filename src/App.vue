@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import StepBanner from './components/Step-banner.vue';
 import Footer from './components/Footer.vue';
-import Hero from './components/Hero.vue'
+import MainView from './components/Main-View.vue';
 import type { TSelectedStep } from './types/selectedStep'
 import { selectedStepKey } from './keys/keys'
 
@@ -18,7 +18,7 @@ const nextStep = () => {
 }
 
 const previousStep = () => {
-  if(selectedStep.value > stepAmount) {
+  if(selectedStep.value <= stepAmount) {
     selectedStep.value -= 1
   }
 }
@@ -35,7 +35,7 @@ provide<TSelectedStep>(selectedStepKey, {
 <template>
     <div class="h-full w-full overflow-hidden flex flex-col font-ubuntu text-base">
       <StepBanner class="h-2/6"></StepBanner>
-      <Hero class="grow"></Hero>
+      <MainView></MainView>
       <Footer class="h-1/6"></Footer>
     </div>
 </template>

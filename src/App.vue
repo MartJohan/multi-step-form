@@ -10,6 +10,7 @@ import { provide, ref } from 'vue'
 const selectedStep = ref(1);
 const numbers = [1,2,3,4]
 const stepAmount = numbers.length;
+const disableNext = ref(true);
 
 const nextStep = () => {
   if(selectedStep.value < stepAmount) {

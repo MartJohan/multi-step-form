@@ -1,10 +1,9 @@
 <script setup lang="ts">import { selectedStepKey } from '@/keys/keys';
 import type { TSelectedStep } from '@/types/selectedStep';
-import { inject, ref } from 'vue';
+import { inject } from 'vue';
 
 
 const step = inject<TSelectedStep>(selectedStepKey);
-console.log(step?.selectedStep.value)
 
 </script>
 
@@ -25,7 +24,9 @@ console.log(step?.selectedStep.value)
         <div 
         class="p-2">
             <button 
-            class="rounded p-2 bg-marineBlue text-white"
+            class="rounded p-2 bg-marineBlue text-white hover:cursor-pointer"
+            :disabled="step.disableNext.value"
+            :class="step.disableNext.value ? 'bg-opacity-75' : ''"
             @click="step?.nextStep">
                 <template 
                 v-if="step.selectedStep.value < 4">

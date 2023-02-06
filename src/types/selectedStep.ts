@@ -5,4 +5,5 @@ export type TSelectedStep = {
     stepAmount: number;
     nextStep: () => void;
     previousStep: () => void;
+    disableNext: Ref<boolean>;
 }

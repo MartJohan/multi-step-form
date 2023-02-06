@@ -2,8 +2,8 @@
 import StepBanner from './components/header/Step-banner.vue';
 import Footer from './components/footer/Footer.vue';
 import MainView from './components/main/Main-View.vue';
-import type { TSelectedStep } from './types/selectedStep'
-import { selectedStepKey } from './keys/keys'
+import type { TSelectedStep, TPersonalia, TPersonaliaProvider } from '@/types'
+import { selectedStepKey, personaliaKey } from '@/keys'
 
 import { provide, ref } from 'vue'
 
@@ -28,8 +28,21 @@ provide<TSelectedStep>(selectedStepKey, {
   selectedStep,
   stepAmount,
   nextStep,
-  previousStep
+  previousStep,
+  disableNext
 });
+
+const personalia = ref<NonNullable<TPersonalia>>({
+  name: '',
+  email: '',
+  phoneNumber: '',
+});
+
+const setPersonalia = (personaliaFromChild: TPersonalia) => {
+  personalia.value = personaliaFromChild
+}
+
+provide<TPersonaliaProvider>(personaliaKey, { personalia, setPersonalia })
 
 </script>
 

@@ -24,5 +24,7 @@ module.exports = {
       black: 'rgb(0, 0, 0)',
     }
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms'),
+  ],
 }

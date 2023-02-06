@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import StepBanner from './components/Step-banner.vue';
-import Footer from './components/Footer.vue';
-import MainView from './components/Main-View.vue';
+import StepBanner from './components/header/Step-banner.vue';
+import Footer from './components/footer/Footer.vue';
+import MainView from './components/main/Main-View.vue';
 import type { TSelectedStep } from './types/selectedStep'
 import { selectedStepKey } from './keys/keys'
 

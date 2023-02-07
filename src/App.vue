@@ -8,8 +8,8 @@ import { selectedStepKey, personaliaKey } from '@/keys'
 import { provide, ref } from 'vue'
 
 const selectedStep = ref(1);
-const numbers = [1,2,3,4]
-const stepAmount = numbers.length;
+const steps = [1,2,3,4]
+const stepAmount = steps.length;
 const disableNext = ref(true);
 
 const nextStep = () => {

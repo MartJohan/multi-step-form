@@ -8,13 +8,11 @@ type TInputProps = {
 
 const props = defineProps<TInputProps>();
 
-console.log(props)
-
 </script>
 
 <template>
-    <div class="bg-white -translate-y-16 z-10 absolute rounded w-fit p-4 m-4 drop-shadow-lg">
-        <div class="w-full h-full flex flex-col p-4 gap-y-2">
+    <div class="bg-white -translate-y-16 absolute rounded w-fit m-4 drop-shadow-lg z-40">
+        <div class="w-full h-full flex flex-col p-4">
             <h1 class="text-marineBlue font-bold text-xl">
                 {{ props.title }}
             </h1>

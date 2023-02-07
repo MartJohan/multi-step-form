@@ -34,7 +34,7 @@ const contentRender: TMainContent[]  = [
 </script>
 
 <template>
-    <div v-if="step" class="h-full w-full overflow-hidden bg-lightGray bg-opacity-25">
+    <div v-if="step" class="h-full w-full bg-lightGray bg-opacity-25">
         <TranslatedContainer 
         :title="contentRender[step.selectedStep.value - 1].title" 
         :subTitle="contentRender[step.selectedStep.value - 1].subTitle">

@@ -4,7 +4,7 @@ import StepBannerSteps from './Step-banner-steps.vue';
 </script>
 
 <template>
-    <div class="h-full w-full overflow-hidden">
+    <div class="h-full w-full overflow-hidden -z-10 relative">
         <div 
         :style="{ backgroundImage: `url(${BGSidebarMobile})` }" 
         class="h-full w-full flex bg-cover bg-no-repeat">

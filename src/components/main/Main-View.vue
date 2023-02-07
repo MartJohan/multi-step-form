@@ -38,7 +38,9 @@ const contentRender: TMainContent[]  = [
         <TranslatedContainer 
         :title="contentRender[step.selectedStep.value - 1].title" 
         :subTitle="contentRender[step.selectedStep.value - 1].subTitle">
+        <KeepAlive>
             <component :is="contentRender[step.selectedStep.value - 1].component" />
+        </KeepAlive>
         </TranslatedContainer>
     </div>
 </template>

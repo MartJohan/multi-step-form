@@ -4,7 +4,7 @@ import type { TSelectedStep, TMainContent } from '@/types';
 import { inject, ref, watch } from 'vue';
 import PersonaForm from './persona/Persona-form.vue';
 import PlanView from './plan/Plan-View.vue';
-import Addons from './addons/addons.vue'
+import AddonsView from './addons/Addons-View.vue'
 import TranslatedContainer from './Translated-Container.vue'
 
 // This will mainly function as a router-type component to decide which header, subtitle and component that
@@ -26,7 +26,7 @@ const contentRender: TMainContent[]  = [
     {
         title: "Pick add-ons",
         subTitle: "Add-ons help enhance your gaming experience",
-        component: Addons
+        component: AddonsView
     }
 ];
 

@@ -1,7 +1,11 @@
 <script setup lang="ts">
 
 import AddonsViewItemsVue from './Addons-View-Item.vue';
-import type { TAddons } from '@/types';
+import type { TAddons, TAddonsProvider } from '@/types';
+import { selectedAddonsKey } from '@/keys';
+import { inject } from 'vue';
+
+const injectedAddon = inject<TAddonsProvider>(selectedAddonsKey)
 
 const addons: TAddons[] = [
     {
@@ -28,7 +32,11 @@ const addons: TAddons[] = [
 ];
 
 const handleCheckboxChange = (props: TAddons, checked: boolean) => {
-    console.log('check', props)
+    if(checked) {
+        console.log('legg til');
+        return injectedAddon?.AddAddonToSelected(props);
+    }
+    return injectedAddon?.RemoveAddonFromSelected(props.id)
 }
 
 </script>

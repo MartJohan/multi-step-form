@@ -2,35 +2,37 @@
 import StepBanner from './components/header/Step-banner.vue';
 import Footer from './components/footer/Footer.vue';
 import MainView from './components/main/Main-View.vue';
-import type { TSelectedStep, TPersonalia, TPersonaliaProvider } from '@/types'
-import { selectedStepKey, personaliaKey } from '@/keys'
+import type { TSelectedStepProvider, TPersonalia, TPersonaliaProvider, TSelectedMonthlyPlanProvider, TAddons, TAddonsProvider } from '@/types'
+import { selectedStepKey, personaliaKey, selectedMonthlyPlanKey, selectedAddonsKey } from '@/keys'
 
 import { provide, ref } from 'vue'
 
-const selectedStep = ref(1);
-const steps = [1,2,3,4]
+/* Currently selected step */
+const steps = [1, 2, 3, 4]
 const stepAmount = steps.length;
 const disableNext = ref(true);
 
 const nextStep = () => {
-  if(selectedStep.value < stepAmount) {
+  if (selectedStep.value < stepAmount) {
     selectedStep.value += 1;
   }
 }
 
 const previousStep = () => {
-  if(selectedStep.value <= stepAmount) {
+  if (selectedStep.value <= stepAmount) {
     selectedStep.value -= 1
   }
 }
 
-provide<TSelectedStep>(selectedStepKey, {
+provide<TSelectedStepProvider>(selectedStepKey, {
   selectedStep,
   stepAmount,
   nextStep,
   previousStep,
   disableNext
 });
+
+/* Getter / Setter for personal information */
 
 const personalia = ref<NonNullable<TPersonalia>>({
   name: '',
@@ -42,7 +44,38 @@ const setPersonalia = (personaliaFromChild: TPersonalia) => {
   personalia.value = personaliaFromChild
 }
 
-provide<TPersonaliaProvider>(personaliaKey, { personalia, setPersonalia })
+provide<TPersonaliaProvider>(personaliaKey, { personalia, setPersonalia });
+
+/* Getter / Setter for the currently selected plan. If true, the selected plan will be monthly, if false, the plan will be yearly */
+
+const selectedMonthlyPlan = ref(true);
+
+const setSelectedMonthlyPlan = (value: boolean) => {
+  selectedMonthlyPlan.value = value
+}
+
+provide<TSelectedMonthlyPlanProvider>(selectedMonthlyPlanKey, {
+  selectedMonthlyPlan,
+  setSelectedMonthlyPlan
+});
+
+/* Currently selected addons array */
+
+const selectedAddons: TAddons[] = [];
+
+const AddAddonToSelected = (addon: TAddons) => {
+  selectedAddons.push(addon)
+}
+
+const RemoveAddonFromSelected = (addonId: number) => {
+  selectedAddons.filter(addon => addon.id !== addonId);
+}
+
+provide<TAddonsProvider>(selectedAddonsKey, {
+  selectedAddons,
+  AddAddonToSelected,
+  RemoveAddonFromSelected
+});
 
 </script>
 

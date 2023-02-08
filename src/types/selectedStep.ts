@@ -1,6 +1,6 @@
 import type { Ref } from "vue"
 
-export type TSelectedStep = {
+export type TSelectedStepProvider = {
     selectedStep: Ref<number>;
     stepAmount: number;
     nextStep: () => void;

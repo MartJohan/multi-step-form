@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { selectedStepKey } from '@/keys';
-import type { TSelectedStep, TMainContent } from '@/types';
+import type { TSelectedStepProvider, TMainContent } from '@/types';
 import { inject, ref, watch } from 'vue';
 import PersonaForm from './persona/Persona-form.vue';
 import PlanView from './plan/Plan-View.vue';
@@ -10,7 +10,7 @@ import TranslatedContainer from './Translated-Container.vue'
 // This will mainly function as a router-type component to decide which header, subtitle and component that
 // gets displayed in the translated component
 
-const step = inject<TSelectedStep>(selectedStepKey);
+const step = inject<TSelectedStepProvider>(selectedStepKey);
 
 const contentRender: TMainContent[]  = [
     {

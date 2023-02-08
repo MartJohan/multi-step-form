@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { personaliaKey, selectedStepKey } from '@/keys';
-import type { TPersonaliaProvider, TSelectedStep } from '@/types';
+import type { TPersonaliaProvider, TSelectedStepProvider } from '@/types';
 import { inject, ref } from 'vue';
 
 const personaliaProvider = inject<TPersonaliaProvider>(personaliaKey);
-const step = inject<TSelectedStep>(selectedStepKey);
+const step = inject<TSelectedStepProvider>(selectedStepKey);
 const personalia = personaliaProvider?.personalia
 
 const name = ref(personalia?.value.name);

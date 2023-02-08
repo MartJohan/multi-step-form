@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { inject } from 'vue'
-import type { TSelectedStep } from '../../types/selectedStep'
+import type { TSelectedStepProvider } from '../../types/selectedStep'
 import { selectedStepKey } from '../../keys/keys'
 
 
-const step = inject<TSelectedStep>(selectedStepKey);
+const step = inject<TSelectedStepProvider>(selectedStepKey);
 
 </script>
 

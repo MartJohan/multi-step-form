@@ -1,9 +1,25 @@
 <script setup lang="ts">import { selectedStepKey } from '@/keys/keys';
 import type { TSelectedStepProvider } from '@/types/selectedStep';
-import { inject } from 'vue';
+import { computed, inject, reactive, readonly, ref, watchEffect } from 'vue';
 
 
 const step = inject<TSelectedStepProvider>(selectedStepKey);
+
+
+const lastStep = ref(step?.selectedStep.value! > 3);
+const disableNext = ref(step?.disableNext.value);
+
+// (Most likely) Not optimal for setting the updated values of the selected step, but the refs are not getting updated by themselves so this function is needed.
+watchEffect(() => {
+    lastStep.value = step?.selectedStep.value! > 3;
+    disableNext.value = step?.disableNext.value
+})
+
+const buttonClassObject = computed(() => ({
+    'bg-purplishBlue': lastStep.value,
+    'bg-marineBlue': !lastStep.value,
+    'bg-opacity-75': disableNext.value
+}))
 
 </script>
 
@@ -24,16 +40,16 @@ const step = inject<TSelectedStepProvider>(selectedStepKey);
         <div 
         class="p-2">
             <button 
-            class="rounded p-2 bg-marineBlue text-white hover:cursor-pointer"
+            class="rounded p-2 text-white hover:cursor-pointer font-semibold"
             :disabled="step.disableNext.value"
-            :class="step.disableNext.value ? 'bg-opacity-75' : ''"
+            :class="buttonClassObject"
             @click="step?.nextStep">
                 <template 
-                v-if="step.selectedStep.value < 4">
+                v-if="!lastStep">
                     Next Step
                 </template>
                 <template 
-                v-if="step.selectedStep.value > 3">
+                v-if="lastStep">
                     Confirm
                 </template>
             </button>

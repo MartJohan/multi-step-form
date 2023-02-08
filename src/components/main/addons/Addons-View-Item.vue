@@ -1,14 +1,17 @@
-<script setup lang="ts">import { ref } from 'vue';
+<script setup lang="ts">import { selectedMonthlyPlanKey } from '@/keys';
+import type { TSelectedMonthlyPlanProvider } from '@/types';
+import { inject, ref } from 'vue';
 
 
 type TAddonsProps = {
     title: string,
     subTitle: string,
-    monthlyPrice: number
+    monthlyPrice: number,
+    yearlyPrice: number,
 }
 
-const props = defineProps<TAddonsProps>()
-
+const props = defineProps<TAddonsProps>();
+const selectedMonthlyPlan = inject<TSelectedMonthlyPlanProvider>(selectedMonthlyPlanKey);
 const checked = ref(false);
 
 const localCheckboxChange = () => {
@@ -38,7 +41,7 @@ const localCheckboxChange = () => {
             </p>
         </div>
         <p class="text-purplishBlue text-sm">
-            +${{ props.monthlyPrice }}/mo
+            +${{ selectedMonthlyPlan?.selectedMonthlyPlan.value ? props.monthlyPrice + '/mo' : props.yearlyPrice + '/yr' }}
         </p>
     </div>
 </template>

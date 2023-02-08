@@ -26,7 +26,10 @@ const props = defineProps<TPlanItemProps>();
         <component :is="props.icon" />
         <div class="flex flex-col mx-4">
             <h1 class="text-marineBlue font-semibold">{{ props.name }}</h1>
-            <p class="text-coolGray text-sm">${{ showMonthlyCosts ? monthlyPrice : yearlyPrice }}/mo</p>
+            <p 
+            class="text-coolGray text-sm">
+                ${{ showMonthlyCosts ? monthlyPrice + '/mo' : yearlyPrice + '/yr' }}
+            </p>
             <p v-if="!showMonthlyCosts" class="text-marineBlue text-xs">2 months free</p>
         </div>
     </div>

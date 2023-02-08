@@ -2,8 +2,8 @@
 
 
 type TInputProps = {
-    title: string;
-    subTitle: string;
+    title?: string;
+    subTitle?: string;
 }
 
 const props = defineProps<TInputProps>();

@@ -7,6 +7,7 @@ import PlanView from './plan/Plan-View.vue';
 import AddonsView from './addons/Addons-View.vue'
 import TranslatedContainer from './Translated-Container.vue'
 import SummaryView from './summary/Summary-View.vue';
+import Confirmation from './summary/Confirmation.vue'
 
 // This will mainly function as a router-type component to decide which header, subtitle and component that
 // gets displayed in the translated component
@@ -36,17 +37,20 @@ const contentRender: TMainContent[]  = [
     }
 ];
 
-
 </script>
 
 <template>
-    <div v-if="step" class="h-full w-full bg-lightGray bg-opacity-25">
+    <div class="h-full w-full bg-lightGray bg-opacity-25">
         <TranslatedContainer 
+        v-if="step && !step.final.value"
         :title="contentRender[step.selectedStep.value - 1].title" 
         :subTitle="contentRender[step.selectedStep.value - 1].subTitle">
         <KeepAlive>
             <component :is="contentRender[step.selectedStep.value - 1].component" />
         </KeepAlive>
+        </TranslatedContainer>
+        <TranslatedContainer v-if="step && step.final.value">
+            <component :is="Confirmation" />
         </TranslatedContainer>
     </div>
 </template>

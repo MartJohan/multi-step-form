@@ -33,7 +33,6 @@ const addons: TAddons[] = [
 
 const handleCheckboxChange = (props: TAddons, checked: boolean) => {
     if(checked) {
-        console.log('legg til');
         return injectedAddon?.AddAddonToSelected(props);
     }
     return injectedAddon?.RemoveAddonFromSelected(props.id)

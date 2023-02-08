@@ -7,3 +7,4 @@ export const personaliaKey = Symbol() as InjectionKey<TPersonalia>;
 export const selectedMonthlyPlanKey = Symbol() as InjectionKey<boolean>;
 export const selectedAddonsKey = Symbol() as InjectionKey<TAddons>;
 export const selectedPlanKey = Symbol() as InjectionKey<TPlan>;
+export const sumKey = Symbol() as InjectionKey<number>

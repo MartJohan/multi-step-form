@@ -2,8 +2,8 @@
 import StepBanner from './components/header/Step-banner.vue';
 import Footer from './components/footer/Footer.vue';
 import MainView from './components/main/Main-View.vue';
-import type { TSelectedStepProvider, TPersonalia, TPersonaliaProvider, TSelectedMonthlyPlanProvider, TAddons, TAddonsProvider } from '@/types'
-import { selectedStepKey, personaliaKey, selectedMonthlyPlanKey, selectedAddonsKey } from '@/keys'
+import type { TSelectedStepProvider, TPersonalia, TPersonaliaProvider, TSelectedMonthlyPlanProvider, TAddons, TAddonsProvider, TPlan, TPlanProvider, TSumProvider } from '@/types'
+import { selectedStepKey, personaliaKey, selectedMonthlyPlanKey, selectedAddonsKey, selectedPlanKey, sumKey } from '@/keys'
 
 import { provide, ref } from 'vue'
 
@@ -57,7 +57,6 @@ const selectedPlan = ref<TPlan>({
 });
 
 const setSelectedPlan = (plan: TPlan) => {
-  console.log("plan", plan)
   selectedPlan.value = plan;
 }
 
@@ -74,6 +73,11 @@ const setSelectedMonthlyPlan = (value: boolean) => {
   selectedMonthlyPlan.value = value
 }
 
+const getSumOfPlan = () => {
+  if(selectedMonthlyPlan) return selectedPlan.value.monthlyPrice
+  return selectedPlan.value.yearlyPrice;
+}
+
 provide<TSelectedMonthlyPlanProvider>(selectedMonthlyPlanKey, {
   selectedMonthlyPlan,
   setSelectedMonthlyPlan
@@ -81,21 +85,49 @@ provide<TSelectedMonthlyPlanProvider>(selectedMonthlyPlanKey, {
 
 /* Currently selected addons array */
 
-const selectedAddons: TAddons[] = [];
+const selectedAddons = ref<TAddons[]>([]);
 
 const AddAddonToSelected = (addon: TAddons) => {
-  selectedAddons.push(addon)
+  selectedAddons.value.push(addon);
 }
 
 const RemoveAddonFromSelected = (addonId: number) => {
-  selectedAddons.filter(addon => addon.id !== addonId);
+  selectedAddons.value = selectedAddons.value.filter(addon => addon.id !== addonId);
+}
+
+const GetSumOfMonthlyAddons = () => {
+  let sum = 0;
+  selectedAddons.value.map(addon => sum += addon.monthlyPrice);
+  return sum;
+}
+
+const getSumOfYearlyAddons = () => {
+  let sum = 0;
+  selectedAddons.value.map(addon => sum += addon.yearlyPrice);
+  return sum
 }
 
 provide<TAddonsProvider>(selectedAddonsKey, {
   selectedAddons,
   AddAddonToSelected,
-  RemoveAddonFromSelected
+  RemoveAddonFromSelected,
 });
+
+const sum = ref(0);
+
+const getMonthlySum = () => {
+  return sum.value = GetSumOfMonthlyAddons() + getSumOfPlan()
+}
+
+const getYearlySum = () => {
+  return sum.value = getSumOfYearlyAddons() + getSumOfPlan();
+}
+
+provide<TSumProvider>(sumKey, {
+  sum,
+  getMonthlySum,
+  getYearlySum
+})
 
 </script>
 

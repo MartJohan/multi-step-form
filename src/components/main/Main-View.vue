@@ -6,6 +6,7 @@ import PersonaForm from './persona/Persona-form.vue';
 import PlanView from './plan/Plan-View.vue';
 import AddonsView from './addons/Addons-View.vue'
 import TranslatedContainer from './Translated-Container.vue'
+import SummaryView from './summary/Summary-View.vue';
 
 // This will mainly function as a router-type component to decide which header, subtitle and component that
 // gets displayed in the translated component
@@ -27,6 +28,11 @@ const contentRender: TMainContent[]  = [
         title: "Pick add-ons",
         subTitle: "Add-ons help enhance your gaming experience",
         component: AddonsView
+    },
+    {
+        title: "Finishing up",
+        subTitle: "Double-check everything looks OK before confirming",
+        component: SummaryView
     }
 ];
 

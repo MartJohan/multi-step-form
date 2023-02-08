@@ -46,7 +46,27 @@ const setPersonalia = (personaliaFromChild: TPersonalia) => {
 
 provide<TPersonaliaProvider>(personaliaKey, { personalia, setPersonalia });
 
-/* Getter / Setter for the currently selected plan. If true, the selected plan will be monthly, if false, the plan will be yearly */
+/* Getter / Setter for currently selected plan */
+
+const selectedPlan = ref<TPlan>({
+  id: 0,
+  name: '',
+  monthlyPrice: 0,
+  yearlyPrice: 0,
+  icon: undefined
+});
+
+const setSelectedPlan = (plan: TPlan) => {
+  console.log("plan", plan)
+  selectedPlan.value = plan;
+}
+
+provide<TPlanProvider>(selectedPlanKey, {
+  selectedPlan,
+  setSelectedPlan
+});
+
+/* Getter / Setter for having a monthly or yearly plan. If true, the selected plan will be monthly, if false, the plan will be yearly */
 
 const selectedMonthlyPlan = ref(true);
 

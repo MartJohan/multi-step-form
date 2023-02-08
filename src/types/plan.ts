@@ -5,5 +5,5 @@ export type TPlan = {
     name: string;
     monthlyPrice: number;
     yearlyPrice: number;
-    icon: Component;
+    icon: Component | undefined;
 }

@@ -1,16 +1,17 @@
 <script setup lang="ts">
 
-import type { TPlan, TSelectedMonthlyPlanProvider } from '@/types';
+import type { TPlan, TPlanProvider, TSelectedMonthlyPlanProvider } from '@/types';
 import ItemIconArcade  from '../../utils/Item-Icon-Arcade.vue'
 import ItemIconPro  from '../../utils/Item-Icon-Pro.vue'
 import ItemIconAdvanced  from '../../utils/Item-Icon-Advanced.vue'
 import PlanViewItems from './Plan-View-Items.vue';
 import FormButtonSliderToggle from '../../utils/Form-Button-Slider-Toggle.vue';
 import { inject, ref } from 'vue';
-import { selectedMonthlyPlanKey } from '@/keys';
+import { selectedMonthlyPlanKey, selectedPlanKey } from '@/keys';
 
-const clickedPlan = ref<number | undefined>(undefined);
+const selectedPlan = inject<TPlanProvider>(selectedPlanKey)
 const selectedMonthlyPlan = inject<TSelectedMonthlyPlanProvider>(selectedMonthlyPlanKey);
+const clickedPlan = ref<number | undefined>(selectedPlan?.selectedPlan.value.id);
 
 const plans: TPlan[] = [
     {
@@ -36,12 +37,13 @@ const plans: TPlan[] = [
     }
 ]
 
-const handleClickOnPlan = (planId: number) => {
-    clickedPlan.value = planId
+const handleClickOnPlan = (plan: TPlan) => {
+    clickedPlan.value = plan.id
+    selectedPlan?.setSelectedPlan(plan);
 }
 
 const handleSliderToggleClick = (showMonthlycostToggle: boolean) => {
-    selectedMonthlyPlan?.setSelectedMonthlyPlan(showMonthlycostToggle)
+    selectedMonthlyPlan?.setSelectedMonthlyPlan(showMonthlycostToggle);
 }
 
 const ToggledText = "text-marineBlue font-semibold text-sm";
@@ -56,7 +58,7 @@ const nonToggledText = "text-coolGray font-semibold text-sm"
             :name="plan.name" 
             :monthly-price="plan.monthlyPrice"
             :yearly-price="plan.yearlyPrice"
-            :icon="plan.icon" 
+            :icon="plan.icon!" 
             :key="index"
             :show-monthly-costs="selectedMonthlyPlan?.selectedMonthlyPlan.value!"
             @handle-click-on-plan="handleClickOnPlan"

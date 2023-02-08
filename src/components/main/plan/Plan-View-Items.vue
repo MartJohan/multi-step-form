@@ -21,7 +21,7 @@ const props = defineProps<TPlanItemProps>();
 <template>
     <div 
     class="flex flex-row p-4 border-coolGray border rounded-lg my-2"
-    @click="$emit('handleClickOnPlan', props.id)"
+    @click="$emit('handleClickOnPlan', props)"
     >
         <component :is="props.icon" />
         <div class="flex flex-col mx-4">

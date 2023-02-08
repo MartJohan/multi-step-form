@@ -4,6 +4,7 @@ import { inject, ref } from 'vue';
 
 
 type TAddonsProps = {
+    id: number,
     title: string,
     subTitle: string,
     monthlyPrice: number,

@@ -5,18 +5,21 @@ import type { TAddons } from '@/types';
 
 const addons: TAddons[] = [
     {
+        id: 1,
         title: "Online service",
         subTitle: "Access to multiplayer games",
         monthlyPrice: 1,
         yearlyPrice: 10
     },
     {
+        id: 2,
         title: "Larger storage",
         subTitle: "Extra 1TB of cloud save",
         monthlyPrice: 2,
         yearlyPrice: 20
     },
     {
+        id: 3,
         title: "Customizable profile",
         subTitle: "Custom theme on your profile",
         monthlyPrice: 2,
@@ -24,18 +27,15 @@ const addons: TAddons[] = [
     }
 ];
 
-
-
-
-
 const handleCheckboxChange = (props: TAddons, checked: boolean) => {
-
+    console.log('check', props)
 }
 
 </script>
 
 <template>
     <AddonsViewItemsVue v-for="addon in addons" 
+    :id="addon.id"
     :title="addon.title" 
     :sub-title="addon.subTitle" 
     :monthly-price="addon.monthlyPrice"

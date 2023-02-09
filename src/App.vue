@@ -8,11 +8,11 @@ import { selectedStepKey, personaliaKey, selectedMonthlyPlanKey, selectedAddonsK
 import { provide, ref } from 'vue'
 
 /* Currently selected step */
-const selectedStep = ref(4);
+const selectedStep = ref(1);
 const steps = [1, 2, 3, 4]
 const stepAmount = steps.length;
 const disableNext = selectedStep.value > 1 ? ref(false) : ref(true);
-const final = ref(true);
+const final = ref(false);
 
 const nextStep = () => {
   if (selectedStep.value < stepAmount) {
@@ -141,10 +141,12 @@ provide<TSumProvider>(sumKey, {
 </script>
 
 <template>
-  <div class="h-full w-full overflow-hidden flex flex-col font-ubuntu text-base">
-    <StepBanner class="h-2/6"></StepBanner>
-    <MainView></MainView>
-    <Footer v-if="!final" class="h-1/6"></Footer>
+  <div class="h-full w-full overflow-hidden flex flex-col font-ubuntu text-base xl:flex-row xl:p-2">
+    <StepBanner class="h-2/6 xl:h-full xl:basis-1/3"></StepBanner>
+    <div class="h-full w-full overflow-hidden flex flex-col">
+      <MainView></MainView>
+      <Footer v-if="!final" class="h-1/6"></Footer>
+    </div>
   </div>
 </template>
 

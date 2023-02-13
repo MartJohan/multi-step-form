@@ -8,4 +8,5 @@ export type TSelectedStepProvider = {
     disableNext: Ref<boolean>;
     final: Ref<boolean>;
     setFinal: () => void;
+    setStep: (value: number) => void;
 }

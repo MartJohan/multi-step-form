@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { selectedAddonsKey, selectedMonthlyPlanKey, selectedPlanKey, sumKey } from '@/keys';
-import type { TAddonsProvider, TPlanProvider, TSelectedMonthlyPlanProvider, TSumProvider } from '@/types';
+import { selectedAddonsKey, selectedMonthlyPlanKey, selectedPlanKey, selectedStepKey, sumKey } from '@/keys';
+import type { TAddonsProvider, TPlanProvider, TSelectedMonthlyPlanProvider, TSelectedStepProvider, TSumProvider } from '@/types';
 import SummaryViewAddons from './Summary-View-Addons.vue'
 import { inject } from 'vue';
 
@@ -9,6 +9,11 @@ const selectedPlan = inject<TPlanProvider>(selectedPlanKey)!;
 const selectedMonthlyPlan = inject<TSelectedMonthlyPlanProvider>(selectedMonthlyPlanKey)!;
 const selectedAddons  = inject<TAddonsProvider>(selectedAddonsKey)!;
 const sum = inject<TSumProvider>(sumKey);
+const step = inject<TSelectedStepProvider>(selectedStepKey);
+
+const handleChangeClick = () => {
+    step?.setStep(2);
+}
 
 </script>
 
@@ -21,7 +26,10 @@ const sum = inject<TSumProvider>(sumKey);
                         {{ selectedPlan.selectedPlan.value.name }}
                         <span>{{ selectedMonthlyPlan.selectedMonthlyPlan.value ? '(Monthly)' : '(Yearly)' }}</span>
                     </p>
-                    <p class="text-coolGray underline">Change</p>
+                    <p 
+                    class="text-coolGray underline hover:text-purplishBlue hover:decoration-purplishBlue hover:cursor-pointer"
+                    @click="handleChangeClick"
+                    >Change</p>
                 </div>
                 <p class="p-2 text-marineBlue font-semibold">
                     {{ selectedMonthlyPlan.selectedMonthlyPlan.value ? selectedPlan.selectedPlan.value.monthlyPrice + '/mo' 

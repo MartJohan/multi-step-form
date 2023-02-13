@@ -17,9 +17,9 @@ watchEffect(() => {
 })
 
 const buttonClassObject = computed(() => ({
-    'bg-purplishBlue': lastStep.value,
-    'bg-marineBlue': !lastStep.value,
-    'bg-opacity-75': disableNext.value
+    'bg-purplishBlue hover:bg-opacity-50': lastStep.value, // Applied when we're at the last step
+    'bg-marineBlue': !lastStep.value, // Applied when we're not on the last step
+    'bg-opacity-75': disableNext.value, // Applied when the button's supposed to be disabled
 }))
 
 </script>

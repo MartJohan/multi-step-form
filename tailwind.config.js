@@ -23,6 +23,10 @@ module.exports = {
       Alabaster: 'rgb(250, 251, 255)',
       white: 'rgb(255, 255, 255)',
       black: 'rgb(0, 0, 0)',
+    },
+    backgroundImage: {
+      bgSiderbarMobile: "url('./src/assets/images/bg-sidebar-mobile.svg')",
+      bgSiderbarDesktop: "url('./src/assets/images/bg-sidebar-desktop.svg')"
     }
   },
   plugins: [

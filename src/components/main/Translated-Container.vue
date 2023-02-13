@@ -1,6 +1,5 @@
 <script setup lang="ts">
 
-
 type TInputProps = {
     title?: string;
     subTitle?: string;

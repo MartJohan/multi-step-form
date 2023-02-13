@@ -52,7 +52,8 @@ const nonToggledText = "text-coolGray font-semibold text-sm"
 </script>
 
 <template>
-    <div class="flex flex-col">
+    <div class="flex flex-col xl:gap-y-4">
+        <div class="flex flex-col xl:flex-row">
             <PlanViewItems v-for="(plan, index) in plans" 
             :id="plan.id"
             :name="plan.name" 
@@ -64,7 +65,9 @@ const nonToggledText = "text-coolGray font-semibold text-sm"
             @handle-click-on-plan="handleClickOnPlan"
             :class="typeof clickedPlan === 'number' && clickedPlan === plan.id ? 'bg-magnolia border-purplishBlue' : ''"
             />
-            <div class="flex flex-row w-full bg-magnolia justify-center p-2 gap-x-4 items-center">
+        </div>
+            <div 
+            class="flex flex-row w-full bg-magnolia justify-center p-2 gap-x-4 items-center">
                 <p 
                 :class="selectedMonthlyPlan?.selectedMonthlyPlan.value! ? ToggledText : nonToggledText">Monthly</p>
                 <FormButtonSliderToggle 

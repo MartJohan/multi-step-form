@@ -1,4 +1,4 @@
-<script setup lang="ts">
+    <script setup lang="ts">
 import type { Component } from 'vue';
 
 // Double defining this type cause of a runtime error with Vue 3, ref: https://github.com/vuejs/core/issues/4294
@@ -20,11 +20,12 @@ const props = defineProps<TPlanItemProps>();
 
 <template>
     <div 
-    class="flex flex-row p-4 border-coolGray border rounded-lg my-2"
+    class="flex flex-row p-4 border-coolGray border rounded-lg my-2 cursor-pointer
+    xl:flex-col xl:gap-y-8 xl:basis-1/3 xl:m-2"
     @click="$emit('handleClickOnPlan', props)"
     >
         <component :is="props.icon" />
-        <div class="flex flex-col mx-4">
+        <div class="flex flex-col mx-4 xl:mx-0">
             <h1 class="text-marineBlue font-semibold">{{ props.name }}</h1>
             <p 
             class="text-coolGray text-sm">

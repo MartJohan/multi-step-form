@@ -7,8 +7,10 @@ import { selectedStepKey, personaliaKey, selectedMonthlyPlanKey, selectedAddonsK
 
 import { provide, ref } from 'vue'
 
+//TODO: Branch this out into stores
+
 /* Currently selected step */
-const selectedStep = ref(1);
+const selectedStep = ref(2);
 const steps = [1, 2, 3, 4]
 const stepAmount = steps.length;
 const disableNext = selectedStep.value > 1 ? ref(false) : ref(true);

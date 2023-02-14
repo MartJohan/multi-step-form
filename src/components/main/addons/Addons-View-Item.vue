@@ -24,7 +24,7 @@ const localCheckboxChange = () => {
 
 <template>
   <label
-    class="flex flex-row border border-coolGray rounded-lg p-2 my-2 items-center justify-between cursor-pointer hover:border-purplishBlue xl:my-0 xl:p-4"
+    class="flex flex-row border border-coolGray rounded-lg p-2 my-2 items-center justify-between cursor-pointer hover:border-purplishBlue md:my-0 md:p-4"
     :class="checked ? 'bg-magnolia border-purplishBlue' : ''"
   >
     <input

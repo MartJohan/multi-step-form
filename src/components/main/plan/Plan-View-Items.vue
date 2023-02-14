@@ -19,11 +19,11 @@ const props = defineProps<TPlanItemProps>();
 
 <template>
   <div
-    class="flex flex-row p-4 border-coolGray border rounded-lg my-2 cursor-pointer xl:flex-col xl:gap-y-8 xl:basis-1/3 xl:m-2"
+    class="flex flex-row p-4 border-coolGray border rounded-lg my-2 cursor-pointer md:flex-col md:gap-y-8 md:basis-1/3 md:m-2"
     @click="$emit('handleClickOnPlan', props)"
   >
     <component :is="props.icon" />
-    <div class="flex flex-col mx-4 xl:mx-0">
+    <div class="flex flex-col mx-4 md:mx-0">
       <h1 class="text-marineBlue font-semibold">{{ props.name }}</h1>
       <p class="text-coolGray text-sm">
         ${{ showMonthlyCosts ? monthlyPrice + "/mo" : yearlyPrice + "/yr" }}

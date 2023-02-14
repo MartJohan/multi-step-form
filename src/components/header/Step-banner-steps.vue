@@ -10,24 +10,24 @@ const stepName = ["YOUR INFO", "SELECT PLAN", "ADD-ONS", "SUMMARY"];
 
 <template>
   <div
-    class="h-fit w-full flex flex-row gap-x-5 justify-center xl:flex-col xl:gap-y-6 xl:my-2"
+    class="h-fit w-full flex flex-row gap-x-5 justify-center md:flex-col md:gap-y-6 md:my-2"
   >
     <div
       v-for="(number, index) in step?.stepAmount"
       :key="index"
-      class="text-center align-middle leading-8 font-medium text-white xl:flex xl:flex-row xl:items-center xl:gap-x-4"
+      class="text-center align-middle leading-8 font-medium text-white md:flex md:flex-row md:items-center md:gap-x-4"
     >
       <p
         :class="[
           number === step?.selectedStep.value ? 'text-black bg-pastelBlue' : '',
         ]"
-        class="font-semibold border rounded-full h-8 w-8"
+        class="font-semibold border rounded-full h-8 w-8 flex-none"
       >
         {{ number }}
       </p>
-      <div class="hidden xl:flex xl:flex-col xl:justify-start">
+      <div class="hidden md:flex md:flex-col md:justify-start">
         <p class="text-coolGray w-fit">Step {{ number }}</p>
-        <p class="text-sm font-semibold w-fit">
+        <p class="text-sm font-semibold w-fit truncate">
           {{ stepName[number - 1] }}
         </p>
       </div>

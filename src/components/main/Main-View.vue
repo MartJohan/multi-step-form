@@ -41,7 +41,7 @@ const contentRender: TMainContent[] = [
 <template>
   <div
     id="MainView"
-    class="h-full w-full overflow-hidden xl:w-auto xl:max-h-full"
+    class="h-full w-full overflow-hidden md:w-auto md:max-h-full"
   >
     <TranslatedContainer
       v-if="step && !step.final.value"

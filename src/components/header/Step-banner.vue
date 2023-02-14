@@ -19,7 +19,7 @@ window.addEventListener('resize', () => {
 
 <template>
   <div
-    class="w-full overflow-hidden relative h-2/6 xl:h-auto xl:rounded-xl xl:basis-1/3 xl:z-0"
+    class="w-full overflow-hidden relative h-2/6 md:h-auto md:rounded-xl md:basis-1/3 md:z-0"
   >
     <div
       :style="{

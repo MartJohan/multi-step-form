@@ -169,12 +169,12 @@ provide<TSumProvider>(sumKey, {
 <template>
   <div
     id="AppView"
-    class="h-full w-full overflow-hidden flex flex-col font-ubuntu text-base bg-white rounded-xl xl:flex-row xl:p-4 xl:max-h-[75%] xl:max-w-[75%] xl:mx-auto"
+    class="h-full w-full overflow-hidden flex flex-col font-ubuntu text-base bg-white rounded-xl md:flex-row md:p-4 md:max-h-[75%] md:max-w-[75%] md:mx-auto"
   >
     <StepBanner></StepBanner>
     <div
       id="MainViewAndFooterContainer"
-      class="h-full w-full overflow-hidden flex flex-col xl:mx-auto"
+      class="h-full w-full overflow-hidden flex flex-col md:mx-auto"
     >
       <MainView></MainView>
       <Footer v-if="!final" class="h-1/6"></Footer>

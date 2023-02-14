@@ -58,8 +58,8 @@ const nonToggledText = "text-coolGray font-semibold text-sm";
 </script>
 
 <template>
-  <div class="flex flex-col xl:gap-y-4">
-    <div class="flex flex-col xl:flex-row">
+  <div class="flex flex-col md:gap-y-4">
+    <div class="flex flex-col md:flex-row">
       <PlanViewItems
         v-for="(plan, index) in plans"
         :id="plan.id"

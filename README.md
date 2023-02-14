@@ -60,7 +60,7 @@ A component I'm rather proud of is the Main-View and Translated-Container compon
 
 ```ts
 <template>
-    <div id="MainView" class="h-full w-full overflow-hidden xl:w-auto xl:max-h-full">
+    <div id="MainView" class="h-full w-full overflow-hidden md:w-auto md:max-h-full">
         <TranslatedContainer 
         v-if="step && !step.final.value"
         :title="contentRender[step.selectedStep.value - 1].title" 
@@ -123,9 +123,9 @@ const props = defineProps<TInputProps>();
 
 <template>
     <div id="TranslatedView" class="bg-white -translate-y-16 absolute rounded-lg w-fit m-4 px-2 drop-shadow-lg z-40
-    xl:-translate-y-0 xl:block xl:w-auto xl:h-full xl:static xl:drop-shadow-none">
-        <div class="w-full h-full flex flex-col p-4 mx-auto xl:max-w-[75%] xl:my-12 xl:gap-y-4">
-            <h1 class="text-marineBlue font-bold text-xl xl:text-4xl">
+    md:-translate-y-0 md:block md:w-auto md:h-full md:static md:drop-shadow-none">
+        <div class="w-full h-full flex flex-col p-4 mx-auto md:max-w-[75%] md:my-12 md:gap-y-4">
+            <h1 class="text-marineBlue font-bold text-xl md:text-4xl">
                 {{ props.title }}
             </h1>
             <p class="text-coolGray font-medium">

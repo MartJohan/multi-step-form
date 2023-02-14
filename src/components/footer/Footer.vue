@@ -23,15 +23,15 @@ const buttonClassObject = computed(() => ({
 
 <template>
   <div v-if="step" :class="[step.selectedStep.value > 1 ? 'justify-between' : 'justify-end']"
-    class="h-full w-full overflow-hidden flex flex-row items-center p-2 font-semibold xl:max-w-[75%] xl:mx-auto xl:p-8">
+    class="h-full w-full overflow-hidden flex flex-row items-center p-2 font-semibold md:max-w-[75%] md:mx-auto md:p-8">
     <div class="p-2" :class="[step.selectedStep.value > 1 ? 'block' : 'hidden']">
-      <button class="rounded p-2 text-coolGray self-start xl:font-normal" @click="step?.previousStep">
+      <button class="rounded p-2 text-coolGray self-start md:font-normal" @click="step?.previousStep">
         Go Back
       </button>
     </div>
     <div class="p-2">
       <button
-        class="rounded p-2 text-white hover:cursor-pointer font-semibold xl:font-normal xl:text-sm xl:rounded-lg xl:p-3 xl:px-4"
+        class="rounded p-2 text-white hover:cursor-pointer font-semibold md:font-normal md:text-sm md:rounded-lg md:p-3 md:px-4"
         :disabled="step.disableNext.value" :class="buttonClassObject" @click="
           step?.selectedStep.value !== step?.stepAmount
             ? step?.nextStep()

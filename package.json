@@ -2,6 +2,7 @@
   "name": "multi-step-form",
   "version": "0.0.0",
   "private": true,
+  "homepage": "https://github.com/MartJohan/multi-step-form",
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check build-only",

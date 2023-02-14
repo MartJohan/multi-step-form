@@ -4,8 +4,17 @@ import BGSidebarDesktop from "@/assets/images/bg-sidebar-desktop.svg";
 import { ref } from "vue";
 import StepBannerSteps from "./Step-banner-steps.vue";
 
-//TODO: Make this reactive based on scrren size
-const screenWidth = ref(window.innerWidth);
+const mobile = ref(window.innerWidth <= 375)
+
+window.addEventListener('resize', () => {
+  const width = window.innerWidth;
+  if(width > 375) {
+    return mobile.value = false;
+  } 
+
+  return mobile.value = true
+});
+
 </script>
 
 <template>
@@ -15,7 +24,7 @@ const screenWidth = ref(window.innerWidth);
     <div
       :style="{
         backgroundImage:
-          screenWidth < 1280
+        mobile
             ? `url(${BGSidebarMobile})`
             : `url(${BGSidebarDesktop})`,
       }"
